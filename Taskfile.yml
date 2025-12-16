@@ -1,0 +1,33 @@
+version: '3'
+
+tasks:
+  # Install dependencies
+  install:
+    desc: Install dependencies using uv
+    cmds:
+      - uv sync
+
+  # Run the application
+  run:
+    desc: Run the FastAPI server
+    cmds:
+      - uv run uvicorn src.main:app --reload --host 127.0.0.1 --port 8000
+
+  # Clean up pycache and database
+  clean:
+    desc: Remove cache files and the SQLite database
+    cmds:
+      - find . -type d -name "__pycache__" -exec rm -rf {} +
+      - rm -f clean_todo.db
+
+  # Format code (Optional - assumes ruff or black is installed)
+  fmt:
+    desc: Format code using ruff (if installed)
+    cmds:
+      - uv run ruff format . || echo "Ruff not found, skipping format."
+
+  # Run tests (Optional - assumes pytest is installed)
+  test:
+    desc: Run tests
+    cmds:
+      - uv run pytest

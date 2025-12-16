@@ -15,6 +15,9 @@ uv python pin 3.14.2
 # 4. Add dependencies
 # We use SQLAlchemy + aiosqlite for async SQLite support
 uv add fastapi uvicorn sqlalchemy aiosqlite pydantic-settings
+
+# 5. Add Dev dependencies
+uv add --dev pytest httpx ruff
 ```
 
 # Directory Structure
@@ -48,3 +51,44 @@ uv run python -m src.main
 
 - Swagger: http://127.0.0.1:8000/docs
 - `/api/v1/todos?page=1&size=5&search=buy`
+
+# Taskfile
+
+```sh
+# Start the server
+task run
+
+# Installs/syncs dependencies.
+task install
+
+# Deletes the .db file (fresh start).
+task clean
+
+# Shows all available commands.
+task --list
+```
+
+# Makefile
+
+```sh
+# Start the server:
+make run
+
+# Install dependencies:
+make install
+
+# Reset the database:
+make clean
+```
+
+# Docker
+
+```sh
+docker compose up --build
+
+# Stop the container
+docker compose down
+
+# Start it again
+docker compose up -d
+```
