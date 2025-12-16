@@ -53,4 +53,6 @@ jobs:
       # We skip this step if you haven't written tests yet, 
       # but it's ready for when you do.
       - name: Run Tests
+        # env:
+        #   PYTHONPATH: .
         run: uv run pytest
