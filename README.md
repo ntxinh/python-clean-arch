@@ -47,6 +47,10 @@ uv run uvicorn src.main:app --reload
 
 # Run as a Module
 uv run python -m src.main
+
+# Format
+uvx ruff format
+uv run ruff format
 ```
 
 - Swagger: http://127.0.0.1:8000/docs

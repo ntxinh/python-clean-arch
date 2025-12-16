@@ -3,6 +3,7 @@ from src.main import app
 
 client = TestClient(app)
 
+
 def test_read_main():
     # Verify the API is up and running
     # Note: Swagger UI is at /docs, but let's check a 404 or a known endpoint

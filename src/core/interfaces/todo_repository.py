@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List, Optional
 from src.core.domain.todo import Todo
 
+
 class TodoRepository(ABC):
     @abstractmethod
     async def create(self, todo: Todo) -> Todo:
@@ -12,7 +13,9 @@ class TodoRepository(ABC):
         pass
 
     @abstractmethod
-    async def list(self, limit: int, offset: int, title_search: Optional[str]) -> List[Todo]:
+    async def list(
+        self, limit: int, offset: int, title_search: Optional[str]
+    ) -> List[Todo]:
         pass
 
     @abstractmethod
