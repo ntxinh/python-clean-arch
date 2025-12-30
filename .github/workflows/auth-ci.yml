@@ -44,11 +44,11 @@ jobs:
 
       # 5. Linting (Ruff)
       # Checks for syntax errors and coding style violations
-      # - name: Lint with Ruff
-      #   run: |
-      #     cd auth-api
-      #     uv run ruff check .
-      #     uv run ruff format --check .
+      - name: Lint with Ruff
+        run: |
+          cd auth-api
+          uv run ruff check .
+          uv run ruff format --check .
 
       # 6. Run Tests
       # We skip this step if you haven't written tests yet, 
@@ -56,4 +56,6 @@ jobs:
       # - name: Run Tests
       #   # env:
       #   #   PYTHONPATH: .
-      #   run: uv run pytest
+      #   run: |
+      #     cd auth-api
+      #     uv run pytest

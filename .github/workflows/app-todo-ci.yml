@@ -39,7 +39,7 @@ jobs:
       # 4. Install Dependencies
       - name: Install dependencies
         run: |
-          cd auth-api
+          cd todo-app-api
           uv sync
 
       # 5. Linting (Ruff)
@@ -56,4 +56,6 @@ jobs:
       - name: Run Tests
         # env:
         #   PYTHONPATH: .
-        run: uv run pytest
+        run: |
+          cd todo-app-api
+          uv run pytest
