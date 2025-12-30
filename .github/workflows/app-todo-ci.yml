@@ -1,14 +1,12 @@
-name: CI Pipeline
+name: App Todo CI Pipeline
 
 on:
   push:
     branches:
       - main
-      - master
   pull_request:
     branches:
       - main
-      - master
 
 jobs:
   test-and-lint:
@@ -25,6 +23,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Change directory
+        run: cd todo-app-api
+
       # 2. Install uv
       - name: Install uv
         uses: astral-sh/setup-uv@v5
@@ -33,10 +34,10 @@ jobs:
           enable-cache: true
           cache-dependency-glob: "uv.lock"
 
-      # 3. Install Python 3.14.2
+      # 3. Install Python
       # uv will automatically download and install this version
       - name: Install Python
-        run: uv python install 3.14.2
+        run: uv python install ${{ env.UV_PYTHON }}
 
       # 4. Install Dependencies
       - name: Install dependencies

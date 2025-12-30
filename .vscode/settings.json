@@ -2,9 +2,17 @@
   "files.exclude": {
     "**/__pycache__": true,
     "**/*.pyc": true,
+    "**/.venv": true,
+    "**/logs": true,
+    "**/.ruff_cache": true,
+    "**/.pytest_cache": true,
   },
   "search.exclude": {
     "**/__pycache__": true,
     "**/*.pyc": true,
+    "**/.venv": true,
+    "**/logs": true,
+    "**/.ruff_cache": true,
+    "**/.pytest_cache": true,
   }
 }
