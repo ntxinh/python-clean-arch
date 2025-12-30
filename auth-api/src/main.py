@@ -6,6 +6,7 @@ from src.shared.logger import setup_logging
 from src.features.users.router import router as users_router
 from src.features.auth.router import router as auth_router
 
+
 # Lifecycle manager (startup/shutdown)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -17,15 +18,13 @@ async def lifespan(app: FastAPI):
     # Shutdown: Close DB connection
     await engine.dispose()
 
-app = FastAPI(
-    title=settings.PROJECT_NAME,
-    version=settings.VERSION,
-    lifespan=lifespan
-)
+
+app = FastAPI(title=settings.PROJECT_NAME, version=settings.VERSION, lifespan=lifespan)
 
 # Register Routers
 app.include_router(auth_router, prefix=settings.API_PREFIX)
 app.include_router(users_router, prefix=settings.API_PREFIX)
+
 
 @app.get("/health")
 def health_check():

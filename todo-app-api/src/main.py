@@ -12,17 +12,15 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(
-    title=settings.PROJECT_NAME,
-    version=settings.VERSION,
-    lifespan=lifespan
-)
+app = FastAPI(title=settings.PROJECT_NAME, version=settings.VERSION, lifespan=lifespan)
 
 app.include_router(router, prefix=settings.API_PREFIX)
+
 
 @app.get("/health")
 def health_check():
     return {"status": "ok", "version": settings.VERSION}
+
 
 if __name__ == "__main__":
     import uvicorn
