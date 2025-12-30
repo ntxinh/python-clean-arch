@@ -3,4 +3,4 @@
 __pycache__
 *.pyc
 .DS_Store
-clean_todo.db
+app_todo.db

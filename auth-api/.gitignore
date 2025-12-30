@@ -9,4 +9,8 @@ wheels/
 # Virtual environments
 .venv
 
-clean_todo.db
+.env
+
+logs/
+
+auth.db

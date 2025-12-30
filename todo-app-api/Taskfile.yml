@@ -18,7 +18,7 @@ tasks:
     desc: Remove cache files and the SQLite database
     cmds:
       - find . -type d -name "__pycache__" -exec rm -rf {} +
-      - rm -f clean_todo.db
+      - rm -f app_todo.db
 
   # Format code (Optional - assumes ruff or black is installed)
   fmt:

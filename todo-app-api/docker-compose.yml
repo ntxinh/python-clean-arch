@@ -7,7 +7,7 @@ services:
     volumes:
       # Mount the local directory to the container to persist the SQLite DB
       # Only mapping the DB file ensures we don't overwrite code changes in the container
-      - ./clean_todo.db:/app/clean_todo.db
+      - ./app_todo.db:/app/app_todo.db
     environment:
-      - DATABASE_URL=sqlite+aiosqlite:///./clean_todo.db
+      - DATABASE_URL=sqlite+aiosqlite:///./app_todo.db
     restart: unless-stopped

@@ -20,7 +20,7 @@ run:
 # Clean up pycache and SQLite DB
 clean:
 	find . -type d -name "__pycache__" -exec rm -rf {} +
-	rm -f clean_todo.db
+	rm -f app_todo.db
 
 # Run tests (Optional)
 test:

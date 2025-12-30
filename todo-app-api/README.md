@@ -34,7 +34,7 @@ clean-todo-fastapi/
 │   │   └── web/              # FastAPI Routers & Schemas (DTOs)
 │   └── main.py               # Composition Root
 ├── pyproject.toml
-└── clean_todo.db             # Generated SQLite file
+└── app_todo.db             # Generated SQLite file
 ```
 
 # How to run
