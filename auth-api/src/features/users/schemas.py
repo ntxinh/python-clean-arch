@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, ConfigDict
+from pydantic import BaseModel, EmailStr, ConfigDict, Field
 
 
 # Base properties
@@ -9,7 +9,8 @@ class UserBase(BaseModel):
 
 # Input for Registration
 class UserCreate(UserBase):
-    password: str
+    # Enforce max length 72 to align with Bcrypt
+    password: str = Field(..., max_length=72, min_length=8)
 
 
 # Output for API
