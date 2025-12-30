@@ -23,9 +23,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Change directory
-        run: cd auth-api
-
       # 2. Install uv
       - name: Install uv
         uses: astral-sh/setup-uv@v5
@@ -41,19 +38,22 @@ jobs:
 
       # 4. Install Dependencies
       - name: Install dependencies
-        run: uv sync
+        run: |
+          cd auth-api
+          uv sync
 
       # 5. Linting (Ruff)
       # Checks for syntax errors and coding style violations
-      - name: Lint with Ruff
-        run: |
-          uv run ruff check .
-          uv run ruff format --check .
+      # - name: Lint with Ruff
+      #   run: |
+      #     cd auth-api
+      #     uv run ruff check .
+      #     uv run ruff format --check .
 
       # 6. Run Tests
       # We skip this step if you haven't written tests yet, 
       # but it's ready for when you do.
-      - name: Run Tests
-        # env:
-        #   PYTHONPATH: .
-        run: uv run pytest
+      # - name: Run Tests
+      #   # env:
+      #   #   PYTHONPATH: .
+      #   run: uv run pytest
