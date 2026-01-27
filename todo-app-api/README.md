@@ -64,6 +64,7 @@ uv run pytest
 ```
 
 - Swagger: http://127.0.0.1:8000/docs
+- Redoc: http://127.0.0.1:8000/redoc
 - `/api/v1/todos?page=1&size=5&search=buy`
 
 # Taskfile

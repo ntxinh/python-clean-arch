@@ -15,7 +15,10 @@ uv add python-dotenv loguru
 # Lint & Format
 uv add --dev ruff
 
+uv venv
+source .venv/bin/activate
 uv run uvicorn src.main:app --port 7000 --reload
 ```
 
-http://127.0.0.1:7000/docs
+- http://127.0.0.1:7000/docs
+- http://127.0.0.1:7000/redoc
