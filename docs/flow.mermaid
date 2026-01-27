@@ -1,0 +1,33 @@
+sequenceDiagram
+    autonumber
+
+    participant User
+    participant Agent as AI Agent App (LangGraph)
+    participant OAuth as OAuth2 Server
+    participant MCP as MCP Server
+    participant API as API Server (Todo App)
+
+    %% Authentication Phase
+    User->>Agent: Provide username & password
+    Agent->>OAuth: POST /token (password grant)
+    OAuth-->>Agent: Access Token (JWT)
+
+    %% Agent starts a task
+    User->>Agent: "Create a new todo item"
+
+    %% Agent calls MCP tool
+    Agent->>MCP: MCP Tool Call (create_todo)
+    MCP->>MCP: Validate MCP request
+    MCP->>API: POST /todos\nAuthorization: Bearer Access Token
+
+    %% API validates token
+    API->>OAuth: Validate / introspect token
+    OAuth-->>API: Token valid
+
+    %% Business logic
+    API->>API: Create Todo item
+    API-->>MCP: 201 Created + Todo data
+    MCP-->>Agent: MCP Tool Response (Todo created)
+
+    %% Agent responds to user
+    Agent-->>User: "✅ Todo created successfully"

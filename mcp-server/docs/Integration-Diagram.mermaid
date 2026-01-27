@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant User
+    participant Angular as Angular App
+    participant AI_Backend as AI Orchestrator<br>(LangChain/Python)
+    participant MCP as MCP Server<br>(The Code Above)
+    participant REST as Your REST API
+
+    User->>Angular: "Add 'Buy Milk' to my list"
+    
+    Note right of Angular: Angular already has the<br>User's OAuth Token
+    
+    Angular->>AI_Backend: Send Message + Token
+    
+    Note right of AI_Backend: Orchestrator sees tool definition:<br>create_todo(token, title, description)
+    
+    AI_Backend->>AI_Backend: Inject 'token' into arguments<br>(Hidden from User)
+    
+    AI_Backend->>MCP: Call Tool: create_todo(token="xyz", title="Buy Milk")
+    
+    MCP->>REST: POST /todos (Authorization: Bearer xyz)
+    REST-->>MCP: 200 OK
+    MCP-->>AI_Backend: "Task Created"
+    AI_Backend-->>Angular: "I've added Buy Milk to your list."
