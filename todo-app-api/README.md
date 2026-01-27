@@ -37,6 +37,13 @@ clean-todo-fastapi/
 └── app_todo.db             # Generated SQLite file
 ```
 
+# Create virtual environment and install dependencies
+
+```sh
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
 # How to run
 
 ```sh
